@@ -1,5 +1,5 @@
 from sprite import Sprite
-import test_suite
+
 
 sprites = []
 player = None
