@@ -8,7 +8,7 @@
 x = 50
 y = 50
 xSpeed = 0
-xSpeed = 0
+ySpeed = 0
 
 def setup():
     size(600, 600)
