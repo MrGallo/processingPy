@@ -11,7 +11,7 @@ def draw():
     
     # building
     stroke(0)
-    strokeWeight(13)
+    strokeWeight(5)
     fill(255)
     rect(125, 50, 150, 300)
     
