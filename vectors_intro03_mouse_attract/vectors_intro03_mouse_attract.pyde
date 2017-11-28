@@ -13,10 +13,11 @@
 # 4. Get the mouse to attract the ball.
 #      - create a new vector using the mouse 
 #        location variables mouseX and mouseY.
-#      - Use the PVector angleBetween() method
-#        https://processing.org/reference/PVector_angleBetween_.html
-#      - Print out the angle using the degrees()
-#        function.
+#      - Use the PVector sub() method
+#        https://processing.org/reference/PVector_sub_.html
+#      - Print out the angle using the heading()
+#        function. This prints out the angle in radians
+#      - Use the degrees() function to convert radians to degrees.
  
 pos = PVector(50, 50)
 speed = PVector(3, 2)
