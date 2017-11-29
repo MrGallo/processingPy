@@ -32,6 +32,14 @@ def setup():
     pos_x = random(0, width)
     pos_y = random(0, height)
 
+
 def draw():
     background(0)
     ellipse(pos_x, pos_y, 40, 40)
+    
+
+def mousePressed():
+    global pos_x
+    global pos_y
+    pos_x = random(0, width)
+    pos_y = random(0, height)
