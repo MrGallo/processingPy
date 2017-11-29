@@ -28,6 +28,7 @@ p2_pos_y = 0
 ball_size = 40
 p1_score = 0
 p2_score = 0
+winner = None
 
 def setup():
     global p1_pos_x
@@ -48,9 +49,10 @@ def draw():
     global p1_pos_y
     global p1_score
     global p2_score
+    global winner
     
     background(0)
-    
+    textAlign(LEFT)
     # Player 1 board
     fill(137, 206, 138)
     rect(0, 0, width/2, height)
@@ -79,6 +81,12 @@ def draw():
     textSize(30)
     text("Score: " + str(p2_score), width/2 + 30, 50)
 
+    if winner:
+        textSize(90)
+        textAlign(CENTER)
+        fill(255)
+        text(winner + " WINS!", width/2, height/2)
+
 def mousePressed():
     global p1_pos_x
     global p1_pos_y
@@ -87,6 +95,7 @@ def mousePressed():
     global p1_score
     global p2_score
     global ball_size
+    global winner
     
     # Click-detection
     # Your approach will most likely be diferent.
@@ -110,3 +119,9 @@ def mousePressed():
         p2_pos_x = random(width/2, width)
         p2_pos_y = random(0, height)
         p2_score += 1
+    
+    if winner == None:
+        if p1_score == 10:
+            winner = "PLAYER 1"
+        elif p2_score == 10:
+            winner = "PLAYER 2"
