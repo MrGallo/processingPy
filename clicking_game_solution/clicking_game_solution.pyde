@@ -35,9 +35,17 @@ def setup():
 
 
 def draw():
+    global pos_x
+    global pos_y
+    global score
+    
     background(0)
+    fill(255)
     ellipse(pos_x, pos_y, 40, 40)
     
+    fill(255, 255, 0)
+    textSize(30)
+    text(score, 50, 50)
 
 def mousePressed():
     global pos_x
