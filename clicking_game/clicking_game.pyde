@@ -9,6 +9,11 @@ Create a 2-player clicking game.
    add +1 to the score.
 5. Display the score using the text() function.
    https://processing.org/reference/text_.html
-6. 
-
+6. Now, when the user clicks, use the mouseX and mouseY variables, within the
+   mousePressed() function, compare those values to the location of the ellipse. 
+   If the mouse location is within a certain range, then you add to the 
+   score and change the ellipse location.
+7. Add a second ball, with its own position variable, and its own score, and
+   its own click detection in the mousePressed() function.
+8. If a player reaches a score of 10, they win. Code this.
 """
