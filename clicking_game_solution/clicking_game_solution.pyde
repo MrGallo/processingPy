@@ -21,46 +21,92 @@ Create a 2-player clicking game.
 8. If a player reaches a score of 10, they win. Code this.
 """
 
-pos_x = 0
-pos_y = 0
+p1_pos_x = 0
+p1_pos_y = 0
+p2_pos_x = 0
+p2_pos_y = 0
 ball_size = 40
-score = 0
+p1_score = 0
+p2_score = 0
 
 def setup():
-    global pos_x
-    global pos_y
+    global p1_pos_x
+    global p1_pos_y
+    global p2_pos_x
+    global p2_pos_y
            
     size(800, 400)
-    pos_x = random(0, width)
-    pos_y = random(0, height)
+    p1_pos_x = random(0, width/2)
+    p1_pos_y = random(0, height)
+    
+    p2_pos_x = random(width/2, width)
+    p2_pos_y = random(0, height)
 
 
 def draw():
-    global pos_x
-    global pos_y
-    global score
+    global p1_pos_x
+    global p1_pos_y
+    global p1_score
+    global p2_score
     
     background(0)
-    fill(255)
-    ellipse(pos_x, pos_y, ball_size, ball_size)
     
-    fill(255, 255, 0)
+    # Player 1 board
+    fill(137, 206, 138)
+    rect(0, 0, width/2, height)
+    
+    # Player 1 ball
+    noStroke()
+    fill(50, 75, 54)
+    ellipse(p1_pos_x, p1_pos_y, ball_size, ball_size)
+    
+    # Player 1 Score
+    fill(50, 75, 54)
     textSize(30)
-    text(score, 50, 50)
+    text("Score: " + str(p1_score), 30, 50)
+    
+    # Player 2 board ----------------------------
+    fill(50, 75, 54)
+    rect(width/2, 0, width, height)
+    
+    # Player 2 ball
+    noStroke()
+    fill(137, 206, 138)
+    ellipse(p2_pos_x, p2_pos_y, ball_size, ball_size)
+    
+    # Player 2 Score
+    fill(137, 206, 138)
+    textSize(30)
+    text("Score: " + str(p2_score), width/2 + 30, 50)
 
 def mousePressed():
-    global pos_x
-    global pos_y
-    global score
+    global p1_pos_x
+    global p1_pos_y
+    global p2_pos_x
+    global p2_pos_y
+    global p1_score
+    global p2_score
     global ball_size
     
     # Click-detection
     # Your approach will most likely be diferent.
+    
+    # PLAYER 1
     radius = ball_size / 2.0
-    distance_x = abs(mouseX - pos_x)
-    distance_y = abs(mouseY - pos_y)
+    distance_x = abs(mouseX - p1_pos_x)
+    distance_y = abs(mouseY - p1_pos_y)
     hypotenuse = sqrt(distance_x ** 2 + distance_y ** 2)
     if hypotenuse <= radius:
-        pos_x = random(0, width)
-        pos_y = random(0, height)
-        score += 1
+        p1_pos_x = random(0, width/2)
+        p1_pos_y = random(0, height)
+        p1_score += 1
+        
+    # PLAYER 2
+    radius = ball_size / 2.0
+    distance_x = abs(mouseX - p2_pos_x)
+    distance_y = abs(mouseY - p2_pos_y)
+    hypotenuse = sqrt(distance_x ** 2 + distance_y ** 2)
+    if hypotenuse <= radius:
+        p2_pos_x = random(width/2, width)
+        p2_pos_y = random(0, height)
+        p2_score += 1
