@@ -23,6 +23,7 @@ Create a 2-player clicking game.
 
 pos_x = 0
 pos_y = 0
+score = 0
 
 def setup():
     global pos_x
@@ -41,5 +42,7 @@ def draw():
 def mousePressed():
     global pos_x
     global pos_y
+    global score
     pos_x = random(0, width)
     pos_y = random(0, height)
+    score += 1
