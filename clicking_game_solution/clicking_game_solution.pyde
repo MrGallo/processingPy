@@ -23,6 +23,7 @@ Create a 2-player clicking game.
 
 pos_x = 0
 pos_y = 0
+ball_size = 40
 score = 0
 
 def setup():
@@ -41,7 +42,7 @@ def draw():
     
     background(0)
     fill(255)
-    ellipse(pos_x, pos_y, 40, 40)
+    ellipse(pos_x, pos_y, ball_size, ball_size)
     
     fill(255, 255, 0)
     textSize(30)
@@ -51,6 +52,15 @@ def mousePressed():
     global pos_x
     global pos_y
     global score
-    pos_x = random(0, width)
-    pos_y = random(0, height)
-    score += 1
+    global ball_size
+    
+    # Click-detection
+    # Your approach will most likely be diferent.
+    radius = ball_size / 2.0
+    distance_x = abs(mouseX - pos_x)
+    distance_y = abs(mouseY - pos_y)
+    hypotenuse = sqrt(distance_x ** 2 + distance_y ** 2)
+    if hypotenuse <= radius:
+        pos_x = random(0, width)
+        pos_y = random(0, height)
+        score += 1
