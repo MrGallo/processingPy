@@ -29,12 +29,16 @@ Steps:
     Keep this ball at the bottom of the screen. 
     Draw this ball in the draw() function.
     This will be the player.
-    5. In the draw() function determine if the two
+    5. Whenever the ball hits the bottom, add +1 to a score
+    variable. Draw this score with the text() function.
+    6. In the draw() function determine if the two
     ellipses are touching:
         a) Use pythagorean theorem to find out the 
         distance (hypotenuse) between the two origins.
         b) check to see if the distance is less than 
         the two ellipse radii. (Radiuses)
+    7. Whenever the falling ellipses touch the player, 
+    reset the score.
 """
 ball_1_pos_x = 0
 ball_1_pos_y = 0
@@ -46,6 +50,10 @@ player_pos_x = 0
 player_pos_y = 0
 player_size = 40
 
+background_color = color(39, 76, 119)
+primary_color = color(96, 150, 186)
+secondary_color = color(163, 206, 241)
+
 def setup():
     size(400, 600)
     
@@ -55,7 +63,7 @@ def draw():
     global ball_1_speed_x
     global ball_1_speed_y
     
-    background(255)  # Remove streaking
+    background(background_color)  # Remove streaking
     
     # Update ball 1's location
     ball_1_pos_y += ball_1_speed_y
@@ -69,7 +77,10 @@ def draw():
         ball_1_pos_x = random(0, width)
     
     #Draw ball 1
+    noStroke()
+    fill(secondary_color)
     ellipse(ball_1_pos_x, ball_1_pos_y, ball_1_size, ball_1_size)
     
     # Draw Player
+    fill(primary_color)
     ellipse(player_pos_x, player_pos_y, player_size, player_size)
