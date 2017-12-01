@@ -36,3 +36,12 @@ Steps:
         b) check to see if the distance is less than 
         the two ellipse radii. (Radiuses)
 """
+ball_1_pos_x = 0
+ball_1_pos_y = 0
+
+def setup():
+    size(400, 600)
+    
+def draw():
+    #Draw ball 1
+    ellipse(ball_1_pos_x, ball_1_pos_y, 40, 40)
