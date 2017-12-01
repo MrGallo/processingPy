@@ -40,6 +40,7 @@ ball_1_pos_x = 0
 ball_1_pos_y = 0
 ball_1_speed_x = 0
 ball_1_speed_y = 3  # Move downward 3 pixels per frame
+ball_1_size = 40
 
 def setup():
     size(400, 600)
@@ -53,4 +54,4 @@ def draw():
     
     background(255)  # draw this first
     #Draw ball 1
-    ellipse(ball_1_pos_x, ball_1_pos_y, 40, 40)
+    ellipse(ball_1_pos_x, ball_1_pos_y, ball_1_size, ball_1_size)
