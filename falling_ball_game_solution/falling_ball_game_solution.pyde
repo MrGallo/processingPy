@@ -66,8 +66,6 @@ def draw():
     global ball_1_speed_y
     global score
     
-    background(background_color)  # Remove streaking
-    
     # Update ball 1's location
     ball_1_pos_y += ball_1_speed_y
     
@@ -79,6 +77,20 @@ def draw():
         ball_1_pos_y = 0
         ball_1_pos_x = random(0, width)
         score += 1
+    
+    # Collision detection.
+    # Using pythagorean theroem
+    radius_ball_1 = ball_1_size/2
+    radius_player = player_size/2
+    a = ball_1_pos_x - player_pos_x
+    b = ball_1_pos_y - player_pos_y
+    distance = sqrt(a**2 + b**2)  # hypotenuse of the R-A triangle
+    if distance <= radius_ball_1 + radius_player:
+        score = 0
+        ball_1_pos_y = 0
+        ball_1_pos_x = random(0, width)
+        
+    background(background_color)  # Remove streaking
     
     #Draw ball 1
     noStroke()
