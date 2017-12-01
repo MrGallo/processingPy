@@ -54,6 +54,8 @@ background_color = color(39, 76, 119)
 primary_color = color(96, 150, 186)
 secondary_color = color(163, 206, 241)
 
+score = 0
+
 def setup():
     size(400, 600)
     
@@ -62,6 +64,7 @@ def draw():
     global ball_1_pos_y
     global ball_1_speed_x
     global ball_1_speed_y
+    global score
     
     background(background_color)  # Remove streaking
     
@@ -75,11 +78,18 @@ def draw():
     if ball_1_pos_y > height:
         ball_1_pos_y = 0
         ball_1_pos_x = random(0, width)
+        score += 1
     
     #Draw ball 1
     noStroke()
     fill(secondary_color)
     ellipse(ball_1_pos_x, ball_1_pos_y, ball_1_size, ball_1_size)
+    
+    # Draw score
+    fill(primary_color)
+    textSize(40)
+    textAlign(LEFT)
+    text(score, 20, 50)
     
     # Draw Player
     fill(primary_color)
