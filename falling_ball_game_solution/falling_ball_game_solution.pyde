@@ -42,6 +42,10 @@ ball_1_speed_x = 0
 ball_1_speed_y = 3  # moving 3 pixels per frame
 ball_1_size = 40
 
+player_pos_x = 0
+player_pos_y = 0
+player_size = 40
+
 def setup():
     size(400, 600)
     
@@ -56,9 +60,16 @@ def draw():
     # Update ball 1's location
     ball_1_pos_y += ball_1_speed_y
     
+    # Update player position based on mouse
+    player_pos_x = mouseX
+    player_pos_y = height - player_size/2
+    
     if ball_1_pos_y > height:
         ball_1_pos_y = 0
         ball_1_pos_x = random(0, width)
     
     #Draw ball 1
     ellipse(ball_1_pos_x, ball_1_pos_y, ball_1_size, ball_1_size)
+    
+    # Draw Player
+    ellipse(player_pos_x, player_pos_y, player_size, player_size)
