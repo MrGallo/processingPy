@@ -14,6 +14,8 @@ Steps:
     This will be the falling ball.
     2. Make this ball "fall" by giving it a y-speed.
     Update its location in the draw() function.
+    Also give it an x-speed, but keep it at 0
+    (unless you want to mess around a bit).
     3. When the ball hits the bottom of the screen,
     reset its position to the top of the window.
     You can assign the x-position to a random value.
@@ -34,9 +36,12 @@ Steps:
         b) check to see if the distance is less than 
         the two ellipse radii. (Radiuses)
 """
+ball_1_pos_x = 0
+ball_1_pos_y = 0
 
 def setup():
     size(400, 600)
     
 def draw():
-    ellipse(50, 50, 20, 20)
+    #Draw ball 1
+    ellipse(ball_1_pos_x, ball_1_pos_y, 40, 40)
