@@ -56,5 +56,9 @@ def draw():
     # Update ball 1's location
     ball_1_pos_y += ball_1_speed_y
     
+    if ball_1_pos_y > height:
+        ball_1_pos_y = 0
+        ball_1_pos_x = random(0, width)
+    
     #Draw ball 1
     ellipse(ball_1_pos_x, ball_1_pos_y, ball_1_size, ball_1_size)
