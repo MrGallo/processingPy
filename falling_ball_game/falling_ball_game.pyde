@@ -14,6 +14,8 @@ Steps:
     This will be the falling ball.
     2. Make this ball "fall" by giving it a y-speed.
     Update its location in the draw() function.
+    Also give it an x-speed, but keep it at 0
+    (unless you want to mess around a bit).
     3. When the ball hits the bottom of the screen,
     reset its position to the top of the window.
     You can assign the x-position to a random value.
