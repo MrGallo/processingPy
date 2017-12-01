@@ -38,10 +38,19 @@ Steps:
 """
 ball_1_pos_x = 0
 ball_1_pos_y = 0
+ball_1_speed_x = 0
+ball_1_speed_y = 3  # Move downward 3 pixels per frame
 
 def setup():
     size(400, 600)
     
 def draw():
+    global ball_1_pos_x, ball_1_pos_y
+    global vball_1_speed_x, ball_1_speed_y
+    
+    # Update falling ball position
+    ball_1_pos_y += ball_1_speed_y
+    
+    background(255)  # draw this first
     #Draw ball 1
     ellipse(ball_1_pos_x, ball_1_pos_y, 40, 40)
