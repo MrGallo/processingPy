@@ -27,13 +27,12 @@ def draw():
 
 def keyPressed():
     global input_text
-
     if key == BACKSPACE:
         # Remove the last character from the input_string
         print("Pressed Backspace")
     elif key == ENTER:
         # Submit reaponse
         print("Pressed Enter")
-    else:
+    elif type(key) is unicode:  # Protect against modifiers (SHIFT, CTRL, etc.)
         # Add character to input_string
         input_text = input_text + key
