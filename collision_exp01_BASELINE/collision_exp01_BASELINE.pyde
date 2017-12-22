@@ -15,6 +15,7 @@ Only when the sprites move will they be assigned their cell.
 
 
 class Sprite():
+    friction = 1
     def __init__(self):
         self.pos = PVector(random(width), random(height))
         self.speed = PVector(random(-5, 5), random(-5, 5))
@@ -22,8 +23,20 @@ class Sprite():
         self.width = 30
         self.height = self.width
         self.mass = 1
+        
+    
+    def collide(self, others):
+        for other in others:
+            diff = PVector.sub(self.pos, other.pos)
+            distance = diff.mag()
+            angle = diff.heading()
+            # assuming circular sprites
+            if distance < other.width/2 + self.width/2:
+                print("collide")
+                
     
     def update(self):
+        self.speed.mult(Sprite.friction)
         self.pos.add(self.speed)
         
         if self.pos.x > width or self.pos.x < 0:
@@ -32,7 +45,6 @@ class Sprite():
         if self.pos.y > height or self.pos.y < 0:
             self.speed.y *= -1
             self.pos.y = constrain(self.pos.y, 0, height)
-        
         
         
     def draw(self):
@@ -45,13 +57,15 @@ sprites = []
 
 def setup():
     size(800, 800)
-    for _ in range(4):
+    for _ in range(20):
         sprites.append(Sprite())   
     
 def draw():
     time = millis()
     background(255)
-    for sprite in sprites:
+    for i, sprite in enumerate(sprites):
         sprite.update()
+        # Collide check with remaining sprites.
+        sprite.collide(sprites[i+1:])
         sprite.draw()
-    print("ms: " + str(millis() - time)) 
+    #print("ms: " + str(millis() - time)) 
