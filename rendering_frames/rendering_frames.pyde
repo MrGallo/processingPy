@@ -31,26 +31,25 @@ rendered_frames = []
 def setup():
     global rendered_frames, balls
     size(800, 800)
-    noLoop()
     
     # create and append balls
     for _ in range(10):
         balls.append(Ball())
     
-    # update and draw balls to frame
-    frame = createGraphics(width, height)
-    frame.beginDraw()
-    frame.background(255)
-    for ball in balls:
-        ball.update()
-        ball.draw(frame)
-    rendered_frames.append(frame)
-    frame.endDraw()
+    for _ in range(500):
+        # update and draw balls to frame
+        frame = createGraphics(width, height)
+        frame.beginDraw()
+        frame.background(255)
+        for ball in balls:
+            ball.update()
+            ball.draw(frame)
+        rendered_frames.append(frame)
+        frame.endDraw()
     
 
 def draw():
     global rendered_frames
-    for frame in rendered_frames:
-        image(frame, 0, 0)
-    
-    
+    frameNumber = frameCount % len(rendered_frames)
+    renderedFrameImage = rendered_frames[frameNumber]
+    image(renderedFrameImage, 0, 0)
