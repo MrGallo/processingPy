@@ -45,6 +45,8 @@ def setup():
         ball.update()
         ball.draw(frame)
     rendered_frames.append(frame)
+    frame.endDraw()
+    
 
 def draw():
     global rendered_frames
